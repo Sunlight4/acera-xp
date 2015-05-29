@@ -58,9 +58,11 @@ class XMLHandler(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/xml'
         self.response.write("<xml>")
-        students=Student.fetch(100)
+        students=Student.query().fetch(100)
         for student in students:
-            self.response.write("<student name='"+student.name"' email='"+student.user.email()+"' xp='"+str(student.xp)+"'  multiplier='"+str(student.multiplier)+"'>")
+            self.response.write("<student name='"+student.name+"' email='"+student.user.email()+"' xp='"+str(student.xp)+"'  multiplier='"
+                                +str(student.multiplier)
+                                +"'>")
 app = webapp2.WSGIApplication([
     ('/', MainHandler), ('/init', InitHandler), ('/xml', XMLHandler)
 ], debug=True)
