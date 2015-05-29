@@ -28,10 +28,16 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write('''<html>
         <head>
         <script type="text/javascript" src="pjs/processing.js"></script>
-        
+        <script type="text/javascript">
+        function load() {
+        var pjs = Processing.getInstanceById("visual");
+        var xml = $.get("http://thatfunkysite.com/serving/getxml.php");
+        pjs.buildFromXML(xml);
+        }
+        </script>
         <title>Acera MS XP System</title>
         </head>
-        <body>
+        <body onload="load()">
         <canvas data-processing-sources="pjs/pjs.pde" id="visual"></canvas>
         </body>
         </html>''')
