@@ -12,6 +12,7 @@ void draw() {
   fill(255, 255, 0);
   rect(50, 175, theo_xp, 50);
   String xml = $.get("xml");
+  println(xml)
   println("Life has happened!");
   XML data = XML.parse(xml);
   XML[] xmlpoints = data.getChildren();
