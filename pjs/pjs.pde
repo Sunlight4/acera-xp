@@ -11,10 +11,11 @@ void draw() {
   background(255, 0, 255);
   fill(255, 255, 0);
   rect(50, 175, theo_xp, 50);
-  XML data = loadXML("/xml");
-  XML[] xmlpoints = data.getChildren();
+  String xml = $.get("http://acera-xp.appspot.com/xml");
+  XMLElement data = new XMLElement(xml)
+  XMLElement[] xmlpoints = data.getChildren();
   for(int p=0, end=xmlpoints.length; p<end; p++) {
-  XML xmlpoint = xmlpoints[p];
+  XMLElement xmlpoint = xmlpoints[p];
   int xp = xmlpoint.getInt("xp");
   int multiplier = xmlpoint.getInt("multiplier");
   String name = xmlpoint.getString("name");
