@@ -8,6 +8,7 @@ void setup() {
   size(400, 400);
 }
 void buildFromXML(String xml) {
+  println("Build From XML... Check!");
   XMLElement data = new XMLElement(xml);
   XMLElement data = loadXML("http://acera-xp.appspot.com/xml");
   XMLElement[] xmlpoints = data.getChildren();
@@ -25,7 +26,10 @@ void buildFromXML(String xml) {
   }
   //TODO: do stuff with data
   }
+  redraw();
+}
 void draw() {
+  println("Draw... Check!");
   background(255, 0, 255);
   fill(255, 255, 0);
   rect(50, 175, theo_xp, 50);

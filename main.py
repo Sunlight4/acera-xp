@@ -31,7 +31,7 @@ class MainHandler(webapp2.RequestHandler):
         <script type="text/javascript">
         function load() {
         var pjs = Processing.getInstanceById("visual");
-        var xml = $.get("http://thatfunkysite.com/serving/getxml.php");
+        var xml = $.get("/xml");
         pjs.buildFromXML(xml);
         }
         </script>
