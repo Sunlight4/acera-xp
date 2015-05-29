@@ -20,11 +20,11 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('''<html>
         <head>
-        <script type="text/javascript" src="processing.js"></script>
+        <script type="text/javascript" src="pjs/processing.js"></script>
         <title>Acera MS XP System</title>
         </head>
         <body>
-        <canvas data-processing-sources="/pjs/pjs.pde"></canvas>
+        <canvas data-processing-sources="pjs/pjs.pde"></canvas>
         </body>
         </html>''')
 
