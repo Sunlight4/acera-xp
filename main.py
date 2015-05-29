@@ -33,7 +33,8 @@ class MainHandler(webapp2.RequestHandler):
         var pjs = Processing.getInstanceById("visual");
 		var xml = $.get("xml");
 		pjs.buildFromXML(xml);
-        }
+        println("We ran our script up here!")
+        };
         </script>
         <title>Acera MS XP System</title>
         </head>
