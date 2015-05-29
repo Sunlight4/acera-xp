@@ -58,7 +58,7 @@ class XMLHandler(webapp2.RequestHandler):
         for student in students:
             self.response.write("<student name='"+student.name+"' email='"+student.user.email()+"' xp='"+str(student.xp)+"'  multiplier='"
                                 +str(student.multiplier)
-                                +"'>")
+                                +"'></student>")
         self.response.write("</xml>")
 app = webapp2.WSGIApplication([
     ('/', MainHandler), ('/init', InitHandler), ('/xml', XMLHandler)
