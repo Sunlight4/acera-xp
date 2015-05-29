@@ -15,18 +15,17 @@ void draw() {
   XML[] xmlpoints = data.getChildren();
   for(int p=0, end=xmlpoints.length; p<end; p++) {
   XML xmlpoint = xmlpoints[p];
-  if (xmlpoint.getName() == "student") {
   int xp = xmlpoint.getInt("xp");
   int multiplier = xmlpoint.getInt("multiplier");
   String name = xmlpoint.getString("name");
   String email = xmlpoint.getString("email");
   println(name);
-  if (name == "Theo") {
+  if (name.equals("Theo")) {
+    println("We got Theo!");
     theo_xp=xp;
     println(theo_xp);
   }
   //TODO: do stuff with data
-  }
   }
   
 }
