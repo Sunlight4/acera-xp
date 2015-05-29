@@ -1,3 +1,8 @@
+int theo_xp;
+int xp;
+int multiplier;
+String name;
+String email;
 
 void setup() {
   size(400, 400);
@@ -12,6 +17,9 @@ void buildFromXML(String xml) {
     int multiplier = xmlpoint.getInt("multiplier");
     String name = xmlpoint.getString("name");
     String email = xmlpoint.getString("email");
+    if (name == "Theo") {
+      theo_xp=xp;
+    }
     //TODO: do stuff with data
     }
     }
@@ -21,5 +29,5 @@ void buildFromXML(String xml) {
 void draw() {
   background(255, 0, 255);
   fill(255, 255, 0);
-  rect(mouseX - 5, mouseY - 5, 10, 10);
+  rect(50, 175, theo_xp, 50);
 }
