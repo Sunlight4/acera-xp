@@ -28,6 +28,11 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write('''<html>
         <head>
         <script type="text/javascript" src="pjs/processing.js"></script>
+        
+        <title>Acera MS XP System</title>
+        </head>
+        <body onload="send()">
+        <canvas data-processing-sources="pjs/pjs.pde" id="visual"></canvas>
         <script type="text/javascript">
         var send = function() {
         var pjs = Processing.getInstanceById("visual");
@@ -36,11 +41,6 @@ class MainHandler(webapp2.RequestHandler):
         println("We ran our script up here!")
         };
         </script>
-        <title>Acera MS XP System</title>
-        </head>
-        <body>
-        <canvas data-processing-sources="pjs/pjs.pde" id="visual" onload="send()"></canvas>
-        
         </body>
         </html>''')
 class InitHandler(webapp2.RequestHandler):
