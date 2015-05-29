@@ -18,7 +18,15 @@ import webapp2
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        self.response.write('''<html>
+        <head>
+        <script type="text/javascript" src="processing.js"></script>
+        <title>Acera MS XP System</title>
+        </head>
+        <body>
+        <canvas data-processing-sources="/pjs/pjs.pde"></canvas>
+        </body>
+        </html>''')
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)

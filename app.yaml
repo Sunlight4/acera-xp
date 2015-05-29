@@ -5,12 +5,17 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+- url: /pjs
+  static_dir: pjs
+
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
 
 - url: .*
   script: main.app
+
 
 libraries:
 - name: webapp2
