@@ -25,18 +25,18 @@ class Student(ndb.Model):
     user=ndb.UserProperty()
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        f=open("pde/update.txt", "w")
-        s=Student.fetch(100)
-        for student in s:
-            f.write(student.name+"::"+str(student.xp)+"::"+str(student.multiplier)+"::"+student.user.email()+"\n")
-        f.close()
         self.response.write('''<html>
         <head>
         <script type="text/javascript" src="pjs/processing.js"></script>
         <title>Acera MS XP System</title>
         </head>
         <body>
-        <canvas data-processing-sources="pjs/pjs.pde"></canvas>
+        <canvas data-processing-sources="pjs/pjs.pde" id="visual"></canvas>
+        <script type="text/javascript">
+        var pjs = Processing.getInstanceById("visual");
+		var xml = $.get("xml");
+		pjs.buildFromXML(xml);
+        </script>
         </body>
         </html>''')
 class InitHandler(webapp2.RequestHandler):
@@ -54,7 +54,13 @@ class InitHandler(webapp2.RequestHandler):
         theo.user=users.User("theoh@aceraschool.org")
         theo.put()
         self.redirect('/')
-
+class XMLHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/xml'
+        self.response.write("<xml>")
+        students=Student.fetch(100)
+        for student in students:
+            self.response.write("<student name='"+student.name"' email='"+student.user.email()+"' xp='"+str(student.xp)+"'  multiplier='"+str(student.multiplier)+"'>")
 app = webapp2.WSGIApplication([
-    ('/', MainHandler), ('/init', InitHandler)
+    ('/', MainHandler), ('/init', InitHandler), ('/xml', XMLHandler)
 ], debug=True)
