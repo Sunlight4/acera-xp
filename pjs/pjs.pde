@@ -11,10 +11,7 @@ void draw() {
   background(255, 0, 255);
   fill(255, 255, 0);
   rect(50, 175, theo_xp, 50);
-  String xml = $.get("xml");
-  println(xml)
-  println("Life has happened!");
-  XML data = XML.parse(xml);
+  XML data = loadXML("http://acera-xp.appspot.com/xml");
   XML[] xmlpoints = data.getChildren();
   for(int p=0, end=xmlpoints.length; p<end; p++) {
   XML xmlpoint = xmlpoints[p];
@@ -23,6 +20,7 @@ void draw() {
   int multiplier = xmlpoint.getInt("multiplier");
   String name = xmlpoint.getString("name");
   String email = xmlpoint.getString("email");
+  println(name);
   if (name == "Theo") {
     theo_xp=xp;
     println(theo_xp);
