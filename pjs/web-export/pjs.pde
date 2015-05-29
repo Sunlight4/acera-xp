@@ -8,6 +8,7 @@ void setup() {
   size(400, 400);
 }
 void buildFromXML(String xml) {
+    println("Life has happened!");
     XML data = XML.parse(xml);
     XML[] xmlpoints = data.getChildren();
     for(int p=0, end=xmlpoints.length; p<end; p++) {
@@ -19,7 +20,7 @@ void buildFromXML(String xml) {
     String email = xmlpoint.getString("email");
     if (name == "Theo") {
       theo_xp=xp;
-      println("We got Theo!");
+      println(theo_xp);
     }
     //TODO: do stuff with data
     }
