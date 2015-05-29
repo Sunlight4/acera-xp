@@ -7,7 +7,7 @@ String email;
 void setup() {
   size(400, 400);
 }
-void buildFromXML(String xml) {
+void buildFromXML(String xml){
     XML data = XML.parse(xml);
     XML[] xmlpoints = data.getChildren();
     for(int p=0, end=xmlpoints.length; p<end; p++) {
