@@ -31,16 +31,8 @@ class MainHandler(webapp2.RequestHandler):
         
         <title>Acera MS XP System</title>
         </head>
-        <body onload="send()">
+        <body>
         <canvas data-processing-sources="pjs/pjs.pde" id="visual"></canvas>
-        <script type="text/javascript">
-        var send = function() {
-        var pjs = Processing.getInstanceById("visual");
-		var xml = $.get("xml");
-		pjs.buildFromXML(xml);
-        println("We ran our script up here!")
-        };
-        </script>
         </body>
         </html>''')
 class InitHandler(webapp2.RequestHandler):
