@@ -53,7 +53,7 @@ class InitHandler(webapp2.RequestHandler):
 class XMLHandler(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/xml'
-        self.response.write("<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>")
+        self.response.write('<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>')
         students=Student.query().fetch(100)
         for student in students:
             self.response.write("<student name='"+student.name+"' email='"+student.user.email()+"' xp='"+str(student.xp)+"'  multiplier='"
