@@ -37,8 +37,9 @@ class MainHandler(webapp2.RequestHandler):
         </script>
         <title>Acera MS XP System</title>
         </head>
-        <body onload="load()">
+        <body>
         <canvas data-processing-sources="pjs/pjs.pde" id="visual"></canvas>
+        <button onclick="load()">Load Da Stuff</button>
         </body>
         </html>''')
 class InitHandler(webapp2.RequestHandler):
