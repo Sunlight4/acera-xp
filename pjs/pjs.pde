@@ -11,7 +11,7 @@ void draw() {
   background(255, 0, 255);
   fill(255, 255, 0);
   rect(50, 175, theo_xp, 50);
-  XML data = loadXML("http://acera-xp.appspot.com/xml");
+  XML data = loadXML("/xml");
   XML[] xmlpoints = data.getChildren();
   for(int p=0, end=xmlpoints.length; p<end; p++) {
   XML xmlpoint = xmlpoints[p];
