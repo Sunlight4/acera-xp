@@ -14,10 +14,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import webapp2
-
+from google.appengine.api import users, mail, images
+from google.appengine.ext import ndb, db
+import webapp2, random, pickle, urllib, datetime, locale
+locale.setlocale(locale.LC_ALL, '')
+class Student(ndb.Model):
+    xp=ndb.IntegerProperty()
+    multiplier=ndb.IntegerProperty()
+    name=ndb.StringProperty()
+    user=ndb.UserProperty()
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        f=open("pde/update.txt", "w")
+        s=Student.fetch(100)
+        for student in s:
+            f.write(student.name+"::"+str(student.xp)+"::"+str(student.multiplier)+"::"+student.user.email()+"\n")
+        f.close()
         self.response.write('''<html>
         <head>
         <script type="text/javascript" src="pjs/processing.js"></script>
@@ -27,7 +39,22 @@ class MainHandler(webapp2.RequestHandler):
         <canvas data-processing-sources="pjs/pjs.pde"></canvas>
         </body>
         </html>''')
+class InitHandler(webapp2.RequestHandler):
+    def get(self):
+        ethan=Student()
+        ethan.xp=128
+        ethan.multiplier=1
+        ethan.name="Ethan"
+        ethan.user=users.User("ethans@aceraschool.org")
+        ethan.put()
+        theo=Student()
+        theo.xp=124
+        theo.multiplier=2
+        theo.name="Theo"
+        theo.user=users.User("theoh@aceraschool.org")
+        theo.put()
+        self.redirect('/')
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler), ('/init', InitHandler)
 ], debug=True)
