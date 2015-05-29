@@ -3,15 +3,15 @@ void setup() {
   size(400, 400);
 }
 void buildFromXML(String xml) {
-    XMLElement data = XMLElement.parse(xml);
-    XMLElement[] xmlpoints = data.getChildren();
+    XML data = XML.parse(xml);
+    XML[] xmlpoints = data.getChildren();
     for(int p=0, end=xmlpoints.length; p<end; p++) {
-    XMLElement xmlpoint = xmlpoints[p];
+    XML xmlpoint = xmlpoints[p];
     if (xmlpoint.getName() == "student") {
-    int xp = xmlpoint.getIntAttribute("xp");
-    int multiplier = xmlpoint.getIntAttribute("multiplier");
-    String name = xmlpoint.getStringAttribute("name")
-    String email = xmlpoint.getStringAttribute("email")
+    int xp = xmlpoint.getInt("xp");
+    int multiplier = xmlpoint.getInt("multiplier");
+    String name = xmlpoint.getString("name");
+    String email = xmlpoint.getString("email");
     //TODO: do stuff with data
     }
     }
